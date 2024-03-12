@@ -13,7 +13,7 @@ echo "#############################################################"
 echo "$0: Using PyPi URL ${PYPI}"
 echo "#############################################################"
 
-virtualenv -p python3 /opt/pyop
+python3 -m venv /opt/pyop
 /opt/pyop/bin/pip install -U pip
 
 # setup.py points to current directory

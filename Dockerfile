@@ -1,21 +1,13 @@
-FROM ubuntu:16.04
+FROM ubuntu:20.04
 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN /bin/echo -e "deb http://se.archive.ubuntu.com/ubuntu xenial main restricted universe\ndeb http://archive.ubuntu.com/ubuntu xenial-updates main restricted universe\ndeb http://security.ubuntu.com/ubuntu xenial-security main restricted universe" > /etc/apt/sources.list
+RUN /bin/echo -e "deb http://ports.ubuntu.com/ubuntu-ports focal main restricted universe multiverse\ndeb http://ports.ubuntu.com/ubuntu-ports focal-updates main restricted universe multiverse\ndeb http://ports.ubuntu.com/ubuntu-ports focal-security main restricted universe multiverse" > /etc/apt/sources.list
 
-RUN apt-get update && \
-    apt-get -y dist-upgrade && \
-    apt-get -y install \
-        python3-pip \
-        python-virtualenv \
-        libpython3-dev \
-        python-setuptools \
-        build-essential \
-        libffi-dev \
-        libssl-dev \
-        iputils-ping \
-    && apt-get clean
+RUN apt-get update
+RUN apt-get -y dist-upgrade
+RUN apt-get -y install python3-pip python3-venv libpython3-dev python-setuptools build-essential libffi-dev libssl-dev iputils-ping
+RUN apt-get clean
 
 RUN rm -rf /var/lib/apt/lists/*
 
