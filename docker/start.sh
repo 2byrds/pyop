@@ -20,5 +20,7 @@ start-stop-daemon --start \
     example.wsgi:app \
     -b :9090 \
     --certfile example/https.crt \
-    --keyfile example/https.key
+    --keyfile example/https.key \
+    --cert-reqs 0 \
+    --log-level debug
 
